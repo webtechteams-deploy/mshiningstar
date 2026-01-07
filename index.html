@@ -998,6 +998,54 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+    <script>
+    $("#demoForm").submit(function (e) {
+        e.preventDefault(); // stop page refresh
+
+        $.ajax({
+            url: '/Home/Index',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function (response) {
+                debugger;
+                if (response.success) {
+                    $("#formMessage").html(
+                        '<div class="alert alert-success">' + response.message + '</div>'
+                    );
+                   // ✅ Reset form fields
+                $("#demoForm")[0].reset();
+
+                // ✅ Clear validation messages
+                $(".field-validation-error").empty();
+                $(".input-validation-error")
+                    .removeClass("input-validation-error")
+                    .addClass("valid");
+                } else {
+                    $("#formMessage").html(
+                        '<div class="alert alert-danger">' + response.message + '</div>'
+                    );
+                }
+            },
+            error: function () {
+                $("#formMessage").html(
+                    '<div class="alert alert-danger">Something went wrong. Please try again.</div>'
+                );
+            }
+        });
+    });
+</script>
+
+<script>
+    $('a[href^="#"]').on('click', function (e) {
+        e.preventDefault();
+
+        var target = this.hash;
+        var $target = $(target);
+
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top - 180
+        }, 700);
+    });
+</script>
   </body>
 </html>
