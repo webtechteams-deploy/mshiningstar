@@ -632,80 +632,81 @@
                     <!-- @* <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> *@ -->
                     <p id="formMessage"></p>
                 </div>
-                <form id="demoForm" class="appointment-form ftco-animate">
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Student Name">
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Parent Name">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <div class="form-field">
-                                <div class="select-wrap">
-                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select class="form-control">
-                                        <option style="color:#0e96ed" value="">Gender</option>
-                                        <option style="color:#0e96ed" value="Male">Male</option>
-                                        <option style="color:#0e96ed" value="Female">Female</option>
-                                        <option style="color:#0e96ed" value="Other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Class/Grade">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Medium">
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <p style="color:#fff">Suitable date time</p>
-                        <div st="form-group ml-md-4">
-                            <input type="date" class="form-control" placeholder="date">
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="time" class="form-control" placeholder="time">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <!-- @* <div class="form-group"> -->
-                                <!-- <div class="form-field"> -->
-                                    <!-- <div class="select-wrap"> -->
-                                        <!-- <div class="icon"><span class="ion-ios-arrow-down"></span></div> -->
-                                        <!-- <select name="" id="" class="form-control"> -->
-                                            <!-- <option value="" style="color:black">Select Your Course</option> -->
-                                            <!-- <option value="">Art Lesson</option> -->
-                                            <!-- <option value="">Language Lesson</option> -->
-                                            <!-- <option value="">Music Lesson</option> -->
-                                            <!-- <option value="">Sports</option> -->
-                                            <!-- <option value="">Other Services</option> -->
-                                        <!-- </select> -->
-                                    <!-- </div> -->
-                                <!-- </div> -->
-                            <!-- </div> *@ -->
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <textarea cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-
-                        <div class="form-group ml-md-8">
-                            <input type="submit" value="Submit" class="btn btn-secondary py-3 px-4">
-                        </div>
-                    </div>
-                </form>
+                <form
+                name="appointment"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                class="appointment-form ftco-animate">
+              
+                <!-- Required hidden field -->
+                <input type="hidden" name="form-name" value="appointment">
+              
+                <!-- Honeypot spam protection -->
+                <p style="display:none;">
+                  <label>Don’t fill this out: <input name="bot-field"></label>
+                </p>
+              
+                <div class="d-md-flex">
+                  <div class="form-group">
+                    <input type="text" name="student_name" class="form-control" placeholder="Student Name" required>
+                  </div>
+                  <div class="form-group ml-md-4">
+                    <input type="text" name="parent_name" class="form-control" placeholder="Parent Name" required>
+                  </div>
+                </div>
+              
+                <div class="d-md-flex">
+                  <div class="form-group">
+                    <select name="gender" class="form-control" required>
+                      <option value="">Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group ml-md-4">
+                    <input type="text" name="class_grade" class="form-control" placeholder="Class / Grade">
+                  </div>
+                </div>
+              
+                <div class="d-md-flex">
+                  <div class="form-group">
+                    <input type="text" name="medium" class="form-control" placeholder="Medium">
+                  </div>
+                  <div class="form-group ml-md-4">
+                    <input type="tel" name="phone" class="form-control" placeholder="Phone" required>
+                  </div>
+                </div>
+              
+                <div class="d-md-flex">
+                  <div class="form-group">
+                    <input type="date" name="preferred_date" class="form-control">
+                  </div>
+                  <div class="form-group ml-md-4">
+                    <input type="time" name="preferred_time" class="form-control">
+                  </div>
+                </div>
+              
+                <div class="d-md-flex">
+                  <div class="form-group ml-md-4">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea name="message" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                  </div>
+                </div>
+              
+                <div class="d-md-flex">
+                  <div class="form-group ml-md-8">
+                    <button type="submit" class="btn btn-secondary py-3 px-4">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              
+              </form>
+              
             </div>
         </div>
     </div>
