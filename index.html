@@ -632,81 +632,80 @@
                     <!-- @* <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> *@ -->
                     <p id="formMessage"></p>
                 </div>
-                <form
-                name="appointment"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                class="appointment-form ftco-animate">
-              
-                <!-- Required hidden field -->
-                <input type="hidden" name="form-name" value="appointment">
-              
-                <!-- Honeypot spam protection -->
-                <p style="display:none;">
-                  <label>Don’t fill this out: <input name="bot-field"></label>
-                </p>
-              
-                <div class="d-md-flex">
-                  <div class="form-group">
-                    <input type="text" name="student_name" class="form-control" placeholder="Student Name" required>
+                <form id="demoForm" class="appointment-form ftco-animate" onsubmit="sendDemoForm(event)">
+
+                  <div class="d-md-flex">
+                    <div class="form-group">
+                      <input type="text" name="student_name" id="student_name"
+                        class="form-control" placeholder="Student Name" required>
+                    </div>
+                
+                    <div class="form-group ml-md-4">
+                      <input type="text" name="parent_name" id="parent_name"
+                        class="form-control" placeholder="Parent Name" required>
+                    </div>
                   </div>
-                  <div class="form-group ml-md-4">
-                    <input type="text" name="parent_name" class="form-control" placeholder="Parent Name" required>
+                
+                  <div class="d-md-flex">
+                    <div class="form-group">
+                      <select name="gender" id="gender" class="form-control" required>
+                        <option value="">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                
+                    <div class="form-group ml-md-4">
+                      <input type="text" name="class_grade" id="class_grade"
+                        class="form-control" placeholder="Class / Grade" required>
+                    </div>
                   </div>
-                </div>
-              
-                <div class="d-md-flex">
-                  <div class="form-group">
-                    <select name="gender" class="form-control" required>
-                      <option value="">Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
+                
+                  <div class="d-md-flex">
+                    <div class="form-group">
+                      <input type="text" name="medium" id="medium"
+                        class="form-control" placeholder="Medium">
+                    </div>
+                
+                    <div class="form-group ml-md-4">
+                      <input type="text" name="phone" id="phone"
+                        class="form-control" placeholder="Phone" required>
+                    </div>
                   </div>
-                  <div class="form-group ml-md-4">
-                    <input type="text" name="class_grade" class="form-control" placeholder="Class / Grade">
+                
+                  <p style="color:#fff">Suitable Date & Time</p>
+                
+                  <div class="d-md-flex">
+                    <div class="form-group ml-md-4">
+                      <input type="date" name="date" id="date" class="form-control" required>
+                    </div>
+                
+                    <div class="form-group ml-md-4">
+                      <input type="time" name="time" id="time" class="form-control" required>
+                    </div>
                   </div>
-                </div>
-              
-                <div class="d-md-flex">
-                  <div class="form-group">
-                    <input type="text" name="medium" class="form-control" placeholder="Medium">
+                
+                  <div class="d-md-flex">
+                    <div class="form-group ml-md-4">
+                      <input type="email" name="email" id="email"
+                        class="form-control" placeholder="Email" required>
+                    </div>
+                
+                    <div class="form-group">
+                      <textarea name="message" id="message" cols="30" rows="2"
+                        class="form-control" placeholder="Message"></textarea>
+                    </div>
                   </div>
-                  <div class="form-group ml-md-4">
-                    <input type="tel" name="phone" class="form-control" placeholder="Phone" required>
+                
+                  <div class="d-md-flex">
+                    <div class="form-group ml-md-8">
+                      <input type="submit" value="Submit" class="btn btn-secondary py-3 px-4">
+                    </div>
                   </div>
-                </div>
-              
-                <div class="d-md-flex">
-                  <div class="form-group">
-                    <input type="date" name="preferred_date" class="form-control">
-                  </div>
-                  <div class="form-group ml-md-4">
-                    <input type="time" name="preferred_time" class="form-control">
-                  </div>
-                </div>
-              
-                <div class="d-md-flex">
-                  <div class="form-group ml-md-4">
-                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                  </div>
-                  <div class="form-group">
-                    <textarea name="message" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-                  </div>
-                </div>
-              
-                <div class="d-md-flex">
-                  <div class="form-group ml-md-8">
-                    <button type="submit" class="btn btn-secondary py-3 px-4">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              
-              </form>
-              
+                
+                </form>
+                
             </div>
         </div>
     </div>
@@ -1048,5 +1047,36 @@
         }, 700);
     });
 </script>
+
+<script>
+  (function () {
+    emailjs.init("-T9ZbiIRbpXdPVlNV");
+  })();
+  </script>
+  
+  <script>
+  function sendDemoForm(e) {
+    e.preventDefault();
+  
+    emailjs.send("service_vva7g5o", "service_vva7g5o", {
+      student_name: document.getElementById("student_name").value,
+      parent_name: document.getElementById("parent_name").value,
+      gender: document.getElementById("gender").value,
+      class_grade: document.getElementById("class_grade").value,
+      medium: document.getElementById("medium").value,
+      phone: document.getElementById("phone").value,
+      date: document.getElementById("date").value,
+      time: document.getElementById("time").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    })
+    .then(function () {
+      alert("Appointment request sent successfully!");
+      document.getElementById("demoForm").reset();
+    }, function (error) {
+      alert("Failed: " + error.text);
+    });
+  }
+  </script>
   </body>
 </html>
