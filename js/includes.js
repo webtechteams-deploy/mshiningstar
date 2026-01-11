@@ -1,23 +1,11 @@
 function setActiveNav() {
-  // Current page file name (e.g. index.html)
-  let currentPage = window.location.pathname.split('/').pop();
-
-  if (!currentPage) {
-    currentPage = 'index.html';
-  }
+  const currentPage = document.body.dataset.page;
+  if (!currentPage) return;
 
   document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href) return;
-
-    // Extract file name from href
-    const linkPage = href.split('/').pop();
-
-    if (linkPage === currentPage) {
+    if (link.dataset.page === currentPage) {
       link.classList.add('active');
-
-      const parentLi = link.closest('.nav-item');
-      if (parentLi) parentLi.classList.add('active');
+      link.closest('.nav-item')?.classList.add('active');
     }
   });
 }
